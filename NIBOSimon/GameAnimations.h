@@ -9,9 +9,9 @@
 #ifndef GAMEANIMATIONS_H_
 #define GAMEANIMATIONS_H_
 
-void ShowLostAnimation()
-void ShowEasterEggFoundAnimation()
-void ShowNextLevelAnimation()
+void ShowLostAnimation();
+void ShowEasterEggFoundAnimation();
+void ShowNextLevelAnimation();
 
 
 

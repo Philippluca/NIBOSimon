@@ -4,8 +4,11 @@
  * Created: 01.04.2015 08:07:10
  *  Author: LTI
  */ 
+#include <nibobee/iodefs.h>
 #include <nibobee/led.h>
 #include <nibobee/delay.h>
+
+#include "GameAnimations.h"
 
 void ShowLostAnimation(){
 	DrawCircle(800);
