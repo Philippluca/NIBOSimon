@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "NIBOSimon", "NIBOSimon\NIBOSimon.cproj", "{2F266C81-ACC1-4E8F-89F1-F9079DF91A73}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F266C81-ACC1-4E8F-89F1-F9079DF91A73}.Debug|AVR.ActiveCfg = Debug|AVR
+		{2F266C81-ACC1-4E8F-89F1-F9079DF91A73}.Debug|AVR.Build.0 = Debug|AVR
+		{2F266C81-ACC1-4E8F-89F1-F9079DF91A73}.Release|AVR.ActiveCfg = Release|AVR
+		{2F266C81-ACC1-4E8F-89F1-F9079DF91A73}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
