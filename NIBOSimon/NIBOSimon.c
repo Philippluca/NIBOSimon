@@ -6,14 +6,13 @@
 
 int main()
 {
-	led_init();
+	int actualLevel = 1;
+	int sequence[1000];
 
-	while(1==1)
-	{
-		int myLed = irand(0,3);
-		led_set(myLed, 1);
-		delay(10);
-		led_set(myLed, 0);
-		delay(10);
-	}
+
 }
+
+int FillSequence(int aArray[1000]){
+	
+}
+	
