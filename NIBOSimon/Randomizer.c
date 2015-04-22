@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "Randomizer.h"
+
 int irand(int a, int e)
 {
 	double r = e - a + 1;

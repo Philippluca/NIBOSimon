@@ -2,8 +2,7 @@
 #include <nibobee/sens.h>
 #include <nibobee/led.h>
 #include <nibobee/delay.h>
-#include <nibobee/sens.h>
-
+#include "GameAnimations.h"
 #include "Randomizer.h"
 
 int main()
@@ -142,16 +141,12 @@ int WaitForGameStartImput()
 			led_set(LED_R_YE, 0);
 			led_set(LED_R_RD, 0);
 		}
-<<<<<<< HEAD
 		
 		if(left_Sens == 1 && right_Sens == 1)
 		{
 			//StartGame
 			break;
 		}
-=======
-		delay(5);
->>>>>>> 9aa112da9346c5d448c2ce590966a07f1924f65e
 	}
 }
 
