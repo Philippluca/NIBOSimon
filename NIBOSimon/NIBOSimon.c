@@ -1,4 +1,5 @@
 #include <nibobee/iodefs.h>
+#include <nibobee/sens.h>
 #include <nibobee/led.h>
 #include <nibobee/delay.h>
 #include <nibobee/sens.h>
@@ -113,7 +114,7 @@ int WaitForGameStartImput()
 			}
 			if(left_Sens == 1)
 			{
-				ed_set(LED_L_YE, 0);
+				led_set(LED_L_YE, 0);
 				led_set(LED_L_RD, 1);
 			}
 		}
@@ -141,12 +142,16 @@ int WaitForGameStartImput()
 			led_set(LED_R_YE, 0);
 			led_set(LED_R_RD, 0);
 		}
+<<<<<<< HEAD
 		
 		if(left_Sens == 1 && right_Sens == 1)
 		{
 			//StartGame
 			break;
 		}
+=======
+		delay(5);
+>>>>>>> 9aa112da9346c5d448c2ce590966a07f1924f65e
 	}
 }
 
