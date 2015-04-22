@@ -12,14 +12,17 @@ int main()
 	int index = 0;//rename
 	
 	WaitForGameStartImput();
-	int[1000] gameArray = CreateSequence();
 	
-	int actualLevel = 3;
+	int * gameArray = { 0 };
+		
+	CreateSequence(gameArray);
+	
+	int actualLevel = 2;
 	//int sequence[1000];
 	
 	while(1)//Game loop
 	{
-		ShowLights(actualLevel);
+		ShowLights(actualLevel, gameArray);
 		int status = GetImput(actualLevel, gameArray);
 		if(status ==  0)
 		{
@@ -39,43 +42,20 @@ int main()
 	}
 }
 
-void ShowLights(int index, int[] myArray)
+void ShowLights(int index, int* myArray)
 {
 	//1000 max / index = ms time to show
 	int sleepTime = (int)(1000 / index);
 	
 	for (int i = 0; i <= index; i++)
 	{
-		ShowLight(myArray[i]);
 		delay(sleepTime);
-		
-		DisableAllLights();
+		led_set(myArray[i], 1);
+
 		delay(sleepTime);
+		led_set(myArray[i], 0);
 	}
 }
-
-void ShowLight(int lightIndex)
-{
-	switch(lightIndex)
-	{
-		case 1:
-		led_set(LED_L_YE, 1);
-		break;
-
-		case 2:
-		led_set(LED_L_RD, 1);
-		break;
-
-		case 3:
-		led_set(LED_R_YE, 1);
-		break;
-		
-		case 4:
-		led_set(LED_R_RD, 1);
-		break;
-	}
-}
-
 void DisableAllLights()
 {
 	//Left
@@ -87,12 +67,11 @@ void DisableAllLights()
 	led_set(LED_R_RD, 0);
 }
 
-int[1000] CreateSequence(){
-	int[1000] myArray = int[1000];
-	
-	for (int i = 0; i < sizeof(myArray);i++)
+void CreateSequence(int myArray[], int size)
+{	
+	for (int i = 0; i < size;i++)
 	{
-		int random = rand() % 4 + 1;
+		int random = irand(0,3);
 		myArray[i] = random;
 		
 		return myArray;
@@ -150,7 +129,7 @@ int WaitForGameStartImput()
 	}
 }
 
-int GetImput(int maxIndex, int[1000] sequence)
+int GetImput(int maxIndex, int * sequence)
 {
 	//Return = 1 success, 0 = fail
 	int currentIndex = 0;
@@ -160,7 +139,7 @@ int GetImput(int maxIndex, int[1000] sequence)
 		int right_Sens = sens_getRight();
 		int currentValue = sequence[currentIndex];
 		
-		switch(lightIndex)
+		switch(currentValue)
 		{
 			case 1:
 			if(right_Sens != 0)//Value 3&4
