@@ -5,7 +5,7 @@
 #include "GameAnimations.h"
 #include "Randomizer.h"
 
-static int  gameArray[1000];
+static int  gameArray[100];
 
 int main()
 {
@@ -17,7 +17,7 @@ int main()
 	
 	DisableAllLights();
 		
-	CreateSequence(1000);
+	CreateSequence(100);
 	
 	int actualLevel = 2;
 	//int sequence[1000];
@@ -151,6 +151,44 @@ int GetImput(int maxIndex)
 		int right_Sens = sens_getRight();
 		int currentValue = gameArray[currentIndex];
 		int isPressed = 0;
+		
+		//DEBUG
+		if(left_Sens != 0){
+			if(left_Sens == -1)
+			{
+				led_set(LED_L_YE, 1);
+				led_set(LED_L_RD, 0);
+			}
+			if(left_Sens == 1)
+			{
+				led_set(LED_L_YE, 0);
+				led_set(LED_L_RD, 1);
+			}
+		}
+		else
+		{
+			led_set(LED_L_YE, 0);
+			led_set(LED_L_RD, 0);
+		}
+		
+		if(right_Sens != 0)
+		{
+			if(right_Sens == -1)
+			{
+				led_set(LED_R_YE, 1);
+				led_set(LED_R_RD, 0);
+			}
+			if(right_Sens == 1)
+			{
+				led_set(LED_R_YE, 0);
+				led_set(LED_R_RD, 1);
+			}
+		}
+		else
+		{
+			led_set(LED_R_YE, 0);
+			led_set(LED_R_RD, 0);
+		}
 		
 		switch(currentValue)
 		{
