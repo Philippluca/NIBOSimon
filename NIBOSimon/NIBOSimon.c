@@ -22,7 +22,7 @@ int main()
 	int actualLevel = 2;
 	//int sequence[1000];
 	
-	delay(2000);
+	delay(1000);
 	
 	while(1)//Game loop
 	{
@@ -135,7 +135,7 @@ int WaitForGameStartImput()
 			isPressedToStart = 1;
 		}
 		
-		if(isPressedToStart == 1 && left_Sens == 1 && right_Sens == -1)
+		if(isPressedToStart == 1 && left_Sens == 0 && right_Sens == 0)
 		{
 			//Start game
 			break;
