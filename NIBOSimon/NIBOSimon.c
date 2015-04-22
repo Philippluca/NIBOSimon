@@ -17,7 +17,7 @@ int main()
 	
 	int * gameArray = { 0 };
 		
-	CreateSequence(gameArray);
+	CreateSequence(gameArray,1000);
 	
 	int actualLevel = 2;
 	//int sequence[1000];
@@ -33,6 +33,7 @@ int main()
 			//Left
 			led_set(LED_L_YE, 1);
 			led_set(LED_L_RD, 1);
+			actualLevel = 1;
 		}
 		else
 		{
@@ -86,6 +87,7 @@ void CreateSequence(int myArray[], int size)
 }
 int WaitForGameStartImput()
 {
+	int isPressedToStart = 0;
 	while(1){
 		int left_Sens = sens_getLeft();
 		int right_Sens = sens_getRight();
@@ -130,7 +132,12 @@ int WaitForGameStartImput()
 		
 		if(left_Sens == 1 && right_Sens == -1)
 		{
-			//StartGame
+			isPressedToStart = 1;
+		}
+		
+		if(isPressedToStart == 1 && left_Sens == 1 && right_Sens == -1)
+		{
+			//Start game
 			break;
 		}
 	}
