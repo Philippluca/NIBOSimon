@@ -17,12 +17,23 @@ void ShowLostAnimation(){
 }
 
 void ShowEasterEggFoundAnimation(){
-	
+	BlinkAll(300);
+	DrawCircle(300);
+	BlinkAll(200);
+	BlinkAll(200);
+	DrawCircle(100);
+	DrawCircle(50);
+	DrawCircle(25);
+	BlinkAll(100);
+	BlinkAll(100);
 }
 
 
 void ShowNextLevelAnimation(){
-	
+	BlinkAll(500);
+	delay(500);
+	BlinkAll(500);
+	delay(1000);
 }
 
 void DrawCircle(int aDelayMs){
@@ -32,4 +43,16 @@ void DrawCircle(int aDelayMs){
 		delay(aDelayMs);
 		led_set(led,0);
 	}
+}
+
+void BlinkAll(int aDelayMs){
+	led_set(0,1);
+	led_set(1,1);
+	led_set(2,1);
+	led_set(3,1);
+	delay(aDelayMs);
+	led_set(0,0);
+	led_set(1,0);
+	led_set(2,0);
+	led_set(3,0);
 }
