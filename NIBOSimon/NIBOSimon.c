@@ -199,7 +199,7 @@ int GetImput(int maxIndex)
 			}
 			if(left_Sens != 0)
 			{
-				if(left_Sens == 1)//value 1
+				if(left_Sens == -1)//value 1
 				return 0;
 			}
 			break;
@@ -211,7 +211,7 @@ int GetImput(int maxIndex)
 			}
 			if(left_Sens != 0)
 			{
-				if(left_Sens == -1)//value 0
+				if(left_Sens == 1)//value 0
 				return 0;
 			}
 			break;
@@ -223,7 +223,7 @@ int GetImput(int maxIndex)
 			}
 			if(right_Sens != 0)
 			{
-				if(right_Sens == 1)//value 3
+				if(right_Sens == -1)//value 3
 				return 0;
 			}
 			break;
@@ -235,7 +235,7 @@ int GetImput(int maxIndex)
 			}
 			if(right_Sens != 0)
 			{
-				if(right_Sens == -1)//value 2
+				if(right_Sens == 1)//value 2
 				return 0;
 			}
 		}
