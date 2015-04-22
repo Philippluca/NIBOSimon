@@ -50,7 +50,7 @@ int main()
 void ShowLights(int index)
 {
 	//1000 max / index = ms time to show
-	int sleepTime = (int)(5000 / index);
+	int sleepTime = (int)(3000 / index);
 	
 	for (int i = 0; i <= index; i++)
 	{
