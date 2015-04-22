@@ -13,12 +13,16 @@ int main()
 	
 	WaitForGameStartImput();
 	
+	DisableAllLights();
+	
 	int * gameArray = { 0 };
 		
 	CreateSequence(gameArray);
 	
 	int actualLevel = 2;
 	//int sequence[1000];
+	
+	delay(2000);
 	
 	while(1)//Game loop
 	{
@@ -36,7 +40,7 @@ int main()
 			led_set(LED_R_YE, 1);
 			led_set(LED_R_RD, 1);
 		}
-		delay(1000);
+		delay(2000);
 		DisableAllLights();
 		actualLevel++;
 	}
@@ -45,7 +49,7 @@ int main()
 void ShowLights(int index, int* myArray)
 {
 	//1000 max / index = ms time to show
-	int sleepTime = (int)(1000 / index);
+	int sleepTime = (int)(5000 / index);
 	
 	for (int i = 0; i <= index; i++)
 	{
@@ -55,6 +59,9 @@ void ShowLights(int index, int* myArray)
 		delay(sleepTime);
 		led_set(myArray[i], 0);
 	}
+	
+	//For any case
+	DisableAllLights();
 }
 void DisableAllLights()
 {
@@ -121,7 +128,7 @@ int WaitForGameStartImput()
 			led_set(LED_R_RD, 0);
 		}
 		
-		if(left_Sens == 1 && right_Sens == 1)
+		if(left_Sens == 1 && right_Sens == -1)
 		{
 			//StartGame
 			break;
