@@ -199,7 +199,7 @@ int GetImput(int maxIndex)
 			}
 			if(left_Sens != 0)
 			{
-				if(left_Sens == -1)//value 1
+				if(left_Sens == 1)//value 1
 				return 0;
 			}
 			break;
@@ -211,7 +211,7 @@ int GetImput(int maxIndex)
 			}
 			if(left_Sens != 0)
 			{
-				if(left_Sens == 1)//value 0
+				if(left_Sens == -1)//value 0
 				return 0;
 			}
 			break;
@@ -243,7 +243,7 @@ int GetImput(int maxIndex)
 		if(left_Sens != 0 || right_Sens != 0)
 			isPressed = 1;
 		
-		if(isPressed && left_Sens != 0 && right_Sens != 0){
+		if(isPressed && left_Sens == 0 && right_Sens == 0){
 			isPressed = 0;
 			currentIndex++;
 		}
