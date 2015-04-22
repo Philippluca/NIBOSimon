@@ -79,7 +79,7 @@ void CreateSequence(int myArray[], int size)
 {	
 	for (int i = 0; i < size;i++)
 	{
-		int random = irand(0,3);
+		int random = i;//irand(0,3);
 		myArray[i] = random;
 		
 		return myArray;
