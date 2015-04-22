@@ -1,8 +1,7 @@
 #include <nibobee/iodefs.h>
 #include <nibobee/led.h>
 #include <nibobee/delay.h>
-
-#include <windows.h>
+#include <nibobee/sens.h>
 
 #include "Randomizer.h"
 
@@ -34,7 +33,7 @@ int main()
 			led_set(LED_R_YE, 1);
 			led_set(LED_R_RD, 1);
 		}
-		Sleep(1000);
+		delay(1000);
 		DisableAllLights();
 		actualLevel++;
 	}
@@ -48,10 +47,10 @@ void ShowLights(int index, int[] myArray)
 	for (int i = 0; i <= index; i++)
 	{
 		ShowLight(myArray[i]);
-		Sleep(sleepTime);
+		delay(sleepTime);
 		
 		DisableAllLights();
-		Sleep(sleepTime);
+		delay(sleepTime);
 	}
 }
 
