@@ -138,57 +138,65 @@ int GetImput(int maxIndex, int * sequence)
 		int left_Sens = sens_getLeft();
 		int right_Sens = sens_getRight();
 		int currentValue = sequence[currentIndex];
+		int isPressed = 0;
 		
 		switch(currentValue)
 		{
-			case 1:
-			if(right_Sens != 0)//Value 3&4
+			case 0:
+			if(right_Sens != 0)//Value 2&3
 			{
 				return 0;
 			}
 			if(left_Sens != 0)
 			{
-				if(left_Sens == 1)//value 2
+				if(left_Sens == 1)//value 1
+				return 0;
+			}
+			break;
+
+			case 1:
+			if(right_Sens != 0)//Value 2&3
+			{
+				return 0;
+			}
+			if(left_Sens != 0)
+			{
+				if(left_Sens == -1)//value 0
 				return 0;
 			}
 			break;
 
 			case 2:
-			if(right_Sens != 0)//Value 3&4
-			{
-				return 0;
-			}
-			if(left_Sens != 0)
-			{
-				if(left_Sens == -1)//value 1
-				return 0;
-			}
-			break;
-
-			case 3:
-			if(left_Sens != 0)//Value 1&2
+			if(left_Sens != 0)//Value 0&1
 			{
 				return 0;
 			}
 			if(right_Sens != 0)
 			{
-				if(right_Sens == 1)//value 4
+				if(right_Sens == 1)//value 3
 				return 0;
 			}
 			break;
 			
-			case 4:
-			if(left_Sens != 0)//Value 1&2
+			case 3:
+			if(left_Sens != 0)//Value 0&1
 			{
 				return 0;
 			}
 			if(right_Sens != 0)
 			{
-				if(right_Sens == -1)//value 3
+				if(right_Sens == -1)//value 2
 				return 0;
 			}
 		}
-		currentIndex++;
+		
+		if(left_Sens != 0 || right_Sens != 0)
+			isPressed = 1;
+		
+		if(isPressed && left_Sens != 0 && right_Sens != 0){
+			isPressed = 0;
+			currentIndex++;
+		}
 	}
 	return 1;
 }
