@@ -11,16 +11,20 @@ int main()
 {
 	led_init();//Led Initialization
 	sens_init();//Fühler initialization
-	int index = 0;//rename
+	int index = 0;//rename	
+	int actualLevel = 2;
+	int startParam = WaitForGameStartImput();
 	
-	WaitForGameStartImput();
+	if (startParam == -1)
+	{
+		actualLevel = 30;
+	}
 	
 	DisableAllLights();
 		
 	CreateSequence(100);
 	
-	int actualLevel = 2;
-	//int sequence[1000];
+
 	
 	delay(1000);
 	
@@ -30,16 +34,13 @@ int main()
 		int status = GetImput(actualLevel);
 		if(status ==  0)
 		{
-			//Left
-			led_set(LED_L_YE, 1);
-			led_set(LED_L_RD, 1);
-			actualLevel = 1;
+			ShowLostAnimation();
+			actualLevel=1;
+			CreateSequence(100);
 		}
 		else
 		{
-			//Right
-			led_set(LED_R_YE, 1);
-			led_set(LED_R_RD, 1);
+			ShowNextLevelAnimation();
 		}
 		delay(2000);
 		DisableAllLights();
@@ -127,24 +128,32 @@ int WaitForGameStartImput()
 			led_set(LED_R_YE, 0);
 			led_set(LED_R_RD, 0);
 		}
-		
+		if(left_Sens == -1 && right_Sens == -1)
+		{
+			isPressedToStart = -1;
+		}
 		if(left_Sens == 1 && right_Sens == 1)
 		{
 			isPressedToStart = 1;
 		}
-		
+		if(isPressedToStart == -1 && left_Sens == 0 && right_Sens == 0)
+		{
+			ShowEasterEggFoundAnimation();
+			break;
+		}
 		if(isPressedToStart == 1 && left_Sens == 0 && right_Sens == 0)
 		{
 			//Start game
 			break;
 		}
 	}
+	return isPressedToStart;
 }
 
 int GetImput(int maxIndex)
 {
 	//Return = 1 success, 0 = fail
-	int currentIndex = 0
+	int currentIndex = 0;
 	int isPressed = 0;
 	while (currentIndex <= maxIndex)
 	{
