@@ -144,13 +144,13 @@ int WaitForGameStartImput()
 int GetImput(int maxIndex)
 {
 	//Return = 1 success, 0 = fail
-	int currentIndex = 0;
+	int currentIndex = 0
+	int isPressed = 0;
 	while (currentIndex <= maxIndex)
 	{
 		int left_Sens = sens_getLeft();
 		int right_Sens = sens_getRight();
 		int currentValue = gameArray[currentIndex];
-		int isPressed = 0;
 		
 		//DEBUG
 		if(left_Sens != 0){
