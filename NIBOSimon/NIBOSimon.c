@@ -5,6 +5,8 @@
 #include "GameAnimations.h"
 #include "Randomizer.h"
 
+static int  gameArray[1000];
+
 int main()
 {
 	led_init();//Led Initialization
@@ -14,10 +16,8 @@ int main()
 	WaitForGameStartImput();
 	
 	DisableAllLights();
-	
-	int * gameArray = { 0 };
 		
-	CreateSequence(gameArray,1000);
+	CreateSequence(1000);
 	
 	int actualLevel = 2;
 	//int sequence[1000];
@@ -26,8 +26,8 @@ int main()
 	
 	while(1)//Game loop
 	{
-		ShowLights(actualLevel, gameArray);
-		int status = GetImput(actualLevel, gameArray);
+		ShowLights(actualLevel);
+		int status = GetImput(actualLevel);
 		if(status ==  0)
 		{
 			//Left
@@ -47,7 +47,7 @@ int main()
 	}
 }
 
-void ShowLights(int index, int* myArray)
+void ShowLights(int index)
 {
 	//1000 max / index = ms time to show
 	int sleepTime = (int)(5000 / index);
@@ -55,10 +55,10 @@ void ShowLights(int index, int* myArray)
 	for (int i = 0; i <= index; i++)
 	{
 		delay(sleepTime);
-		led_set(myArray[i], 1);
+		led_set(gameArray[i], 1);
 
 		delay(sleepTime);
-		led_set(myArray[i], 0);
+		led_set(gameArray[i], 0);
 	}
 	
 	//For any case
@@ -75,14 +75,12 @@ void DisableAllLights()
 	led_set(LED_R_RD, 0);
 }
 
-void CreateSequence(int myArray[], int size)
+void CreateSequence(int size)
 {	
 	for (int i = 0; i < size;i++)
 	{
-		int random = i;//irand(0,3);
-		myArray[i] = random;
-		
-		return myArray;
+		int random = irand(0,3);
+		gameArray[i] = random;
 	}
 }
 int WaitForGameStartImput()
@@ -130,7 +128,7 @@ int WaitForGameStartImput()
 			led_set(LED_R_RD, 0);
 		}
 		
-		if(left_Sens == 1 && right_Sens == -1)
+		if(left_Sens == 1 && right_Sens == 1)
 		{
 			isPressedToStart = 1;
 		}
@@ -143,7 +141,7 @@ int WaitForGameStartImput()
 	}
 }
 
-int GetImput(int maxIndex, int * sequence)
+int GetImput(int maxIndex)
 {
 	//Return = 1 success, 0 = fail
 	int currentIndex = 0;
@@ -151,7 +149,7 @@ int GetImput(int maxIndex, int * sequence)
 	{
 		int left_Sens = sens_getLeft();
 		int right_Sens = sens_getRight();
-		int currentValue = sequence[currentIndex];
+		int currentValue = gameArray[currentIndex];
 		int isPressed = 0;
 		
 		switch(currentValue)
