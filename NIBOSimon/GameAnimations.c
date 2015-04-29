@@ -11,9 +11,9 @@
 #include "GameAnimations.h"
 
 void ShowLostAnimation(){
-	DrawCircle(800);
-	DrawCircle(500);
-	DrawCircle(200);		
+	DrawCircle(200);
+	DrawCircle(150);
+	DrawCircle(50);		
 }
 
 void ShowEasterEggFoundAnimation(){	
@@ -30,10 +30,10 @@ void ShowEasterEggFoundAnimation(){
 
 
 void ShowNextLevelAnimation(){	
-		BlinkAll(500);
-		delay(500);
-		BlinkAll(500);
-		delay(1000);
+		BlinkAll(200);
+		delay(200);
+		BlinkAll(200);
+		delay(800);
 }
 
 void DrawCircle(int aDelayMs){

@@ -11,43 +11,43 @@ int main()
 {
 	led_init();//Led Initialization
 	sens_init();//Fühler initialization
-	int index = 0;//rename	
-	int actualLevel = 2;
-	int startParam = WaitForGameStartImput();
 	
-	if (startParam == -1)
+	while(1)
 	{
-		actualLevel = 30;
-	}
-	
-	DisableAllLights();
+		int index = 0;//rename
+		int actualLevel = 2;
+		int startParam = WaitForGameStartImput();
 		
-	CreateSequence(100);
-	
-
-	
-	delay(1000);
-	
-	while(1)//Game loop
-	{
-		ShowLights(actualLevel);
-		int status = GetImput(actualLevel);
-		if(status ==  0)
+		if (startParam == -1)
 		{
-			ShowLostAnimation();
-			actualLevel=1;
-			CreateSequence(100);
+			actualLevel = 30;
 		}
-		else
-		{
-			ShowNextLevelAnimation();
-		}
-		delay(2000);
+		
 		DisableAllLights();
-		actualLevel++;
+		
+		CreateSequence(100);
+		
+		delay(1000);
+		
+		while(1)//Game loop
+		{
+			ShowLights(actualLevel);
+			int status = GetImput(actualLevel);
+			if(status ==  0)
+			{
+				ShowLostAnimation();
+				break;
+			}
+			else
+			{
+				ShowNextLevelAnimation();
+			}
+			delay(2000);
+			DisableAllLights();
+			actualLevel++;
+		}
 	}
 }
-
 void ShowLights(int index)
 {
 	//1000 max / index = ms time to show
@@ -77,7 +77,7 @@ void DisableAllLights()
 }
 
 void CreateSequence(int size)
-{	
+{
 	for (int i = 0; i < size;i++)
 	{
 		int random = irand(0,3);
@@ -250,7 +250,7 @@ int GetImput(int maxIndex)
 		}
 		
 		if(left_Sens != 0 || right_Sens != 0)
-			isPressed = 1;
+		isPressed = 1;
 		
 		if(isPressed && left_Sens == 0 && right_Sens == 0){
 			isPressed = 0;
